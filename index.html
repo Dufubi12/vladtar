@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Влад Тарасьев — бизнес-ассистент & автоматизация</title>
+<meta name="description" content="Влад Тарасьев — бизнес-ассистент и специалист по автоматизации. Внедряю ИИ-агентов, ботов и интеграции. Меньше рутины — больше результата. Реальные кейсы с цифрами.">
+<meta property="og:title" content="Влад Тарасьев — бизнес-ассистент & автоматизация">
+<meta property="og:description" content="Внедряю ИИ-агентов, ботов и интеграции. Меньше рутины — больше результата.">
+<meta property="og:type" content="website">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap&subset=cyrillic,latin');
+
+:root{
+  --bg:#080b0f;
+  --bg2:#0b1015;
+  --surface:#0f1620;
+  --surface2:#141d29;
+  --line:rgba(255,255,255,.07);
+  --line2:rgba(255,255,255,.12);
+  --text:#e9f1ef;
+  --muted:#8ea0a0;
+  --dim:#5c6d6e;
+  --emerald:#0E7C66;
+  --emerald-lit:#159e80;
+  --mint:#2FD0A8;
+  --mint-soft:rgba(47,208,168,.12);
+  --mint-line:rgba(47,208,168,.32);
+  --radius:16px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--mint);color:#04221b}
+a{color:var(--mint);text-decoration:none}
+.serif{font-family:'Lora',Georgia,serif}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+/* ===== NAV ===== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:blur(14px);background:rgba(8,11,15,.72);
+  border-bottom:1px solid transparent;transition:border-color .3s,background .3s;
+}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(8,11,15,.9)}
+.nav-in{max-width:1060px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px;letter-spacing:-.2px}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px var(--mint-soft)}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{color:var(--muted);font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--mint);color:#04221b !important;font-weight:700;padding:8px 16px;border-radius:999px;font-size:13.5px;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px -8px var(--mint)}
+@media(max-width:720px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ===== HERO ===== */
+.hero{position:relative;padding:150px 0 90px;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(760px 520px at 82% -6%, rgba(47,208,168,.13), transparent 62%),
+    radial-gradient(620px 480px at -8% 108%, rgba(14,124,102,.15), transparent 60%);
+}
+.grid-bg{
+  position:absolute;inset:0;z-index:0;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:54px 54px;
+  mask-image:radial-gradient(680px 460px at 70% 8%,#000,transparent 75%);
+  -webkit-mask-image:radial-gradient(680px 460px at 70% 8%,#000,transparent 75%);
+}
+.hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .85fr;gap:48px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:1.6px;text-transform:uppercase;
+  color:var(--mint);font-weight:700;margin-bottom:22px;
+  border:1px solid var(--mint-line);padding:7px 14px;border-radius:999px;background:var(--mint-soft);
+}
+.eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--mint);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--mint-soft)}50%{opacity:.6;box-shadow:0 0 0 6px transparent}}
+.hero h1{font-size:clamp(40px,6.4vw,68px);line-height:1.02;font-weight:800;letter-spacing:-2px}
+.hero h1 .em{font-family:'Lora',serif;font-weight:600;font-style:italic;color:var(--mint);letter-spacing:-1px}
+.hero .lede{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:520px;margin-top:24px}
+.hero .lede b{color:var(--text);font-weight:600}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;
+  padding:14px 24px;border-radius:12px;transition:transform .2s var(--ease),box-shadow .25s;
+}
+.btn-primary{background:var(--mint);color:#04221b}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -12px var(--mint)}
+.btn-ghost{border:1px solid var(--line2);color:var(--text)}
+.btn-ghost:hover{border-color:var(--mint-line);background:var(--mint-soft);transform:translateY(-2px)}
+.hero-meta{margin-top:30px;display:flex;gap:22px;flex-wrap:wrap;font-size:13.5px;color:var(--dim)}
+.hero-meta span{display:inline-flex;align-items:center;gap:7px}
+.hero-meta b{color:var(--muted);font-weight:600}
+
+/* photo */
+.portrait{position:relative;justify-self:end}
+.portrait .frame{
+  position:relative;width:270px;aspect-ratio:334/500;border-radius:20px;overflow:hidden;
+  border:1px solid var(--line2);box-shadow:0 40px 80px -30px rgba(0,0,0,.8);
+}
+.portrait .frame img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05)}
+.portrait .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,11,15,.55))}
+.portrait .tagpill{
+  position:absolute;bottom:16px;left:16px;right:16px;z-index:2;
+  background:rgba(8,11,15,.72);backdrop-filter:blur(8px);border:1px solid var(--mint-line);
+  border-radius:12px;padding:11px 14px;font-size:12.5px;color:var(--text);
+}
+.portrait .tagpill b{color:var(--mint);font-family:'JetBrains Mono',monospace}
+.portrait .glow{position:absolute;inset:-20px;z-index:-1;background:radial-gradient(circle at 50% 40%,rgba(47,208,168,.22),transparent 70%);filter:blur(30px)}
+@media(max-width:840px){
+  .hero-in{grid-template-columns:1fr;gap:36px}
+  .portrait{justify-self:start;order:-1}
+  .portrait .frame{width:180px}
+}
+
+/* ===== METRICS STRIP ===== */
+.metrics{position:relative;z-index:2;margin-top:-30px}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.mcard{
+  background:linear-gradient(180deg,var(--surface),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--radius);padding:22px 20px;position:relative;overflow:hidden;
+  transition:transform .3s var(--ease),border-color .3s;
+}
+.mcard:hover{transform:translateY(-4px);border-color:var(--mint-line)}
+.mcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--mint),var(--emerald))}
+.mcard .n{font-family:'JetBrains Mono',monospace;font-size:27px;font-weight:700;color:var(--mint);letter-spacing:-1px;line-height:1}
+.mcard .l{margin-top:11px;font-size:13px;color:var(--muted);line-height:1.4}
+@media(max-width:820px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.metrics-grid{grid-template-columns:1fr}}
+
+/* ===== SECTIONS ===== */
+section{padding:88px 0}
+.sec-head{margin-bottom:44px}
+.sec-kicker{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mint);font-weight:500;letter-spacing:.5px}
+.sec-head h2{font-size:clamp(28px,4.4vw,42px);font-weight:800;letter-spacing:-1px;margin-top:10px;max-width:720px;line-height:1.1}
+.sec-head h2 .em{font-family:'Lora',serif;font-style:italic;font-weight:600;color:var(--mint)}
+.sec-head p{color:var(--muted);margin-top:16px;max-width:600px;font-size:16px}
+
+/* ===== ABOUT ===== */
+.about{background:linear-gradient(180deg,transparent,var(--bg2),transparent)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.about-lead{font-family:'Lora',serif;font-size:clamp(19px,2.4vw,25px);line-height:1.5;font-weight:500;letter-spacing:-.3px}
+.about-lead .hl{color:var(--mint)}
+.about-body p{color:var(--muted);font-size:15.5px;margin-bottom:15px}
+.about-body p b{color:var(--text);font-weight:600}
+.values{display:grid;gap:12px;margin-top:8px}
+.value{display:flex;gap:14px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;transition:border-color .25s,transform .25s}
+.value:hover{border-color:var(--mint-line);transform:translateX(4px)}
+.value .vn{font-family:'JetBrains Mono',monospace;color:var(--mint);font-size:13px;font-weight:700;flex-shrink:0;padding-top:2px}
+.value .vt{font-weight:700;font-size:15px}
+.value .vd{color:var(--muted);font-size:13.5px;margin-top:3px;line-height:1.45}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:32px}}
+
+/* ===== CASES ===== */
+.case{
+  background:linear-gradient(180deg,var(--surface),var(--bg2));
+  border:1px solid var(--line);border-radius:20px;padding:32px;margin-bottom:20px;
+  position:relative;overflow:hidden;transition:border-color .3s,transform .3s var(--ease);
+}
+.case:hover{border-color:var(--line2);transform:translateY(-3px)}
+.case::after{content:"";position:absolute;top:0;right:0;width:220px;height:220px;background:radial-gradient(circle at 100% 0%,var(--mint-soft),transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none}
+.case:hover::after{opacity:1}
+.case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:22px;flex-wrap:wrap}
+.case-id{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim);margin-bottom:12px}
+.case h3{font-size:22px;font-weight:700;letter-spacing:-.4px;line-height:1.2}
+.case .where{font-size:13.5px;color:var(--dim);margin-top:6px}
+.case .badge{
+  flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--mint);
+  background:var(--mint-soft);border:1px solid var(--mint-line);padding:9px 16px;border-radius:999px;white-space:nowrap;
+}
+.prs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.prs .col .t{font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;margin-bottom:9px}
+.prs .col.pr .t{color:#e78a8a}
+.prs .col.so .t{color:var(--mint)}
+.prs .col.re .t{color:#eab34c}
+.prs .col p{font-size:14px;color:var(--muted);line-height:1.55}
+.prs .col.re p{color:var(--text)}
+.case-stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.tag{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--surface2);border:1px solid var(--line);color:var(--muted);padding:5px 11px;border-radius:7px;transition:.2s}
+.tag:hover{border-color:var(--mint-line);color:var(--mint)}
+.tag.live{color:var(--mint);border-color:var(--mint-line);background:var(--mint-soft)}
+.case-shot{margin-top:24px;border-radius:12px;overflow:hidden;border:1px solid var(--line2);position:relative;background:var(--surface2)}
+.case-shot img{width:100%;height:auto;display:block;transition:transform .5s var(--ease)}
+.case:hover .case-shot img{transform:scale(1.02)}
+.case-shot .cap{position:absolute;bottom:0;left:0;right:0;padding:16px 16px 12px;font-size:12px;color:var(--text);background:linear-gradient(transparent,rgba(8,11,15,.85));display:flex;align-items:center;gap:8px}
+.case-shot .cap .live-dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px var(--mint-soft);flex-shrink:0}
+@media(max-width:720px){.prs{grid-template-columns:1fr;gap:16px}.case{padding:24px}}
+
+/* ===== MORE PROJECTS GRID ===== */
+.more{background:linear-gradient(180deg,transparent,var(--bg2),transparent)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pcard{
+  background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:18px;
+  transition:border-color .25s,transform .25s,background .25s;
+}
+.pcard:hover{border-color:var(--mint-line);transform:translateY(-3px);background:var(--surface2)}
+.pcard .ph{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pcard .pt{font-weight:700;font-size:15px;letter-spacing:-.2px}
+.pcard .ps{font-family:'JetBrains Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);border:1px solid var(--line);padding:3px 7px;border-radius:6px;flex-shrink:0}
+.pcard .ps.prod{color:var(--mint);border-color:var(--mint-line)}
+.pcard .pd{color:var(--muted);font-size:13px;margin-top:9px;line-height:1.45}
+@media(max-width:820px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pgrid{grid-template-columns:1fr}}
+
+/* ===== STACK ===== */
+.stackgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.scol{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .25s}
+.scol:hover{border-color:var(--mint-line)}
+.scol .h{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--mint);font-weight:500;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.scol .h::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mint)}
+.scol .tag{display:inline-block;margin:0 6px 6px 0}
+
+/* ===== TIMELINE ===== */
+.tl{border-left:2px solid var(--line);margin-left:6px;padding-left:30px;max-width:760px}
+.tl .item{position:relative;padding-bottom:34px}
+.tl .item:last-child{padding-bottom:0}
+.tl .item::before{content:"";position:absolute;left:-38px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px var(--bg),0 0 0 7px var(--mint-soft)}
+.tl .when{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--dim)}
+.tl .role{font-size:19px;font-weight:700;margin-top:4px;letter-spacing:-.3px}
+.tl .role span{color:var(--mint);font-weight:600;font-size:14.5px;font-family:'Inter',sans-serif}
+.tl ul{margin-top:12px;list-style:none}
+.tl li{font-size:14.5px;color:var(--muted);padding-left:20px;position:relative;margin-bottom:7px;line-height:1.5}
+.tl li::before{content:"▹";position:absolute;left:0;color:var(--mint)}
+.tl li b{color:var(--text);font-weight:600}
+
+/* ===== CTA ===== */
+.cta-sec{padding:70px 0 96px}
+.cta-box{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--emerald),#0a5c4c);
+  border-radius:26px;padding:60px 48px;text-align:center;
+}
+.cta-box::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 80% -20%,rgba(47,208,168,.35),transparent 60%);pointer-events:none}
+.cta-box::after{content:"";position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(400px 260px at 20% 120%,#000,transparent 70%);-webkit-mask-image:radial-gradient(400px 260px at 20% 120%,#000,transparent 70%)}
+.cta-box .in{position:relative;z-index:1}
+.cta-box h2{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-1px;color:#eafff8}
+.cta-box h2 .em{font-family:'Lora',serif;font-style:italic;font-weight:600}
+.cta-box p{color:rgba(234,255,248,.82);max-width:500px;margin:16px auto 0;font-size:16px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.cta-row .btn-primary{background:#04221b;color:#eafff8}
+.cta-row .btn-primary:hover{box-shadow:0 14px 34px -12px rgba(0,0,0,.6)}
+.cta-row .btn-ghost{border-color:rgba(255,255,255,.35);color:#eafff8}
+.cta-row .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.6)}
+.slogan{margin-top:34px;text-align:center;font-family:'Lora',serif;font-style:italic;font-size:19px;color:var(--muted)}
+.slogan b{color:var(--mint);font-style:normal}
+
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--dim);font-size:13px}
+.foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.foot-in a{color:var(--muted)}
+.foot-in a:hover{color:var(--mint)}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .pulse,.eyebrow .pulse{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top"><span class="dot"></span>Влад&nbsp;Тарасьев</a>
+    <div class="nav-links">
+      <a href="#about">Обо мне</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#stack">Стек</a>
+      <a href="#experience">Опыт</a>
+      <a class="nav-cta" href="https://t.me/absoLute_ages">Написать →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="grid-bg"></div>
+  <div class="wrap hero-in">
+    <div>
+      <div class="eyebrow reveal"><span class="pulse"></span>Бизнес-ассистент · автоматизация · ИИ</div>
+      <h1 class="reveal d1">Освобождаю время<br>руководителя<br><span class="em">через системы</span></h1>
+      <p class="lede reveal d2">Внедряю <b>ИИ-агентов, ботов и интеграции</b>, которые снимают рутину и наводят порядок в процессах. <b>4+ года</b> — от финконтроля и найма до разработки под ключ. Результат считаю в сэкономленных часах и рублях.</p>
+      <div class="hero-actions reveal d2">
+        <a class="btn btn-primary" href="#cases">Смотреть кейсы</a>
+        <a class="btn btn-ghost" href="https://t.me/absoLute_ages">Telegram @absoLute_ages</a>
+      </div>
+      <div class="hero-meta reveal d3">
+        <span><b>📍</b> Брянск · удалённо</span>
+        <span><b>✉</b> vladtar2001@gmail.com</span>
+        <span><b>☎</b> +7 910 119-36-59</span>
+      </div>
+    </div>
+    <div class="portrait reveal d1">
+      <div class="glow"></div>
+      <div class="frame">
+        <img src="data:image/jpeg;base64,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" alt="Влад Тарасьев" width="270" height="404" loading="eager">
+        <div class="tagpill">25 лет · БГУ, компьютерные технологии<br><b>26 проектов</b> в проде и разработке</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- METRICS -->
+<div class="wrap metrics">
+  <div class="metrics-grid">
+    <div class="mcard reveal"><div class="n">60к→5к</div><div class="l">расходы ₽/мес после внедрения ИИ-агентов</div></div>
+    <div class="mcard reveal d1"><div class="n">1,9 млн ₽</div><div class="l">возвращённой дебиторки из 2 млн</div></div>
+    <div class="mcard reveal d2"><div class="n">600+ ч</div><div class="l">высвобождено у первых лиц</div></div>
+    <div class="mcard reveal d3"><div class="n">−90%</div><div class="l">ошибок расчёта ЗП через бота</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">// обо мне</div>
+      <h2>Не просто веду операционку — <span class="em">я её автоматизирую</span></h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="about-lead reveal">Диплом «Компьютерные технологии и ПО» — <span class="hl">не строчка, а рабочий инструмент.</span> Там, где другие нанимают подрядчиков, я собираю бота, связку или ИИ-агента — и задача закрывается сама.</p>
+        <div class="about-body reveal d1" style="margin-top:24px">
+          <p>Работал в онлайн-школе, финансовом и страховом секторе, юридических и ресторанных проектах. Везде задача одна: <b>снять с руководителя рутину</b> и навести порядок в процессах — через CRM-связки, Telegram-ботов, API-интеграции и ИИ-агентов.</p>
+          <p>Пишу код (Python, JavaScript/TypeScript, React, Node.js), проектирую воркфлоу в n8n, поднимаю сервисы на VPS. Но главное — <b>довожу до результата, который можно посчитать.</b></p>
+        </div>
+      </div>
+      <div class="values">
+        <div class="value reveal"><div class="vn">01</div><div><div class="vt">Результат в цифрах</div><div class="vd">Каждое действие меряю в сэкономленных часах, рублях и сниженных ошибках. Нельзя посчитать — работа не закончена.</div></div></div>
+        <div class="value reveal d1"><div class="vn">02</div><div><div class="vt">Системы вместо ручного труда</div><div class="vd">Любую повторяющуюся задачу можно автоматизировать. Ищу корень рутины, а не борюсь с симптомами.</div></div></div>
+        <div class="value reveal d2"><div class="vn">03</div><div><div class="vt">Надёжность</div><div class="vd">Беру задачу — довожу до конца. Руководитель должен забыть о ней, а не контролировать.</div></div></div>
+        <div class="value reveal d3"><div class="vn">04</div><div><div class="vt">Самостоятельность</div><div class="vd">Решаю нестандартные кейсы сам, прихожу с решением, а не с проблемой.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">// избранные кейсы</div>
+      <h2>Проблема → решение → <span class="em">результат</span></h2>
+      <p>Реальные проекты. Часть работает в продакшене прямо сейчас — на VPS, в amoCRM, в Vercel и в мессенджерах.</p>
+    </div>
+
+    <!-- 01 -->
+    <div class="case reveal">
+      <div class="case-id">CASE_01</div>
+      <div class="case-top">
+        <div><h3>ИИ-агенты вместо подрядчиков</h3><div class="where">EcoFamilySchool · онлайн-школа (EdTech)</div></div>
+        <div class="badge">−55 000 ₽/мес</div>
+      </div>
+      <div class="prs">
+        <div class="col pr"><div class="t">Проблема</div><p>~60 000 ₽/мес уходило внешним подрядчикам на рутину: контент, обработка данных, типовые ответы. Дорого, медленно, зависимо от людей.</p></div>
+        <div class="col so"><div class="t">Решение</div><p>Спроектировал связку ИИ-агентов на n8n + LLM: генерация и постинг контента, обработка заявок, типовые ответы. Воркфлоу разбиты на модули, с обработкой ошибок.</p></div>
+        <div class="col re"><div class="t">Результат</div><p>Расходы упали с 60 000 до 5 000 ₽/мес. Скорость и предсказуемость выросли, зависимость от внешних людей ушла.</p></div>
+      </div>
+      <div class="case-stack"><span class="tag live">n8n</span><span class="tag">ИИ-агенты</span><span class="tag">LLM</span><span class="tag">REST API</span></div>
+    </div>
+
+    <!-- 02 -->
+    <div class="case reveal">
+      <div class="case-id">CASE_02</div>
+      <div class="case-top">
+        <div><h3>Автоворонка на n8n для онлайн-школы</h3><div class="where">NeuroCapital · лендинг + автоматизация продаж</div></div>
+        <div class="badge">7 воркфлоу · Vercel</div>
+      </div>
+      <div class="prs">
+        <div class="col pr"><div class="t">Проблема</div><p>Нужна была цельная воронка: лендинг → запись на вебинар → напоминания → дожим → оплата. Всё вручную — теряются лиды на каждом стыке.</p></div>
+        <div class="col so"><div class="t">Решение</div><p>Собрал лендинг с экзит-попапами и лид-формами + 7 сценариев n8n (lead, book, slots, schedule, show-up, purchase, кнопки менеджера). Бэкенд-API на Vercel, CRM-страница, cookie-баннер.</p></div>
+        <div class="col re"><div class="t">Результат</div><p>Полностью автоматический путь клиента от клика до оплаты. Менеджер подключается только там, где нужен человек. Проект в продакшене.</p></div>
+      </div>
+      <div class="case-shot"><img src="case-neurocapital.webp" alt="Лендинг NeuroCapital — главный экран" loading="lazy" width="1200" height="769"><div class="cap"><span class="live-dot"></span>Живой лендинг проекта: hero, видео-презентация, УТП-блоки</div></div>
+      <div class="case-stack"><span class="tag live">n8n</span><span class="tag">Vercel</span><span class="tag">Serverless API</span><span class="tag">Landing</span><span class="tag">CRM</span></div>
+    </div>
+
+    <!-- 03 -->
+    <div class="case reveal">
+      <div class="case-id">CASE_03</div>
+      <div class="case-top">
+        <div><h3>Робот обзвона кандидатов на Bitrix24</h3><div class="where">HR-автоматизация · EdTech</div></div>
+        <div class="badge">48 ✓ тестов</div>
+      </div>
+      <div class="prs">
+        <div class="col pr"><div class="t">Проблема</div><p>Найм упирался в ручной обзвон кандидатов: долго, неравномерно, часть лидов остывала до первого контакта.</p></div>
+        <div class="col so"><div class="t">Решение</div><p>Разработал полуавтоматического робота: ядро дозвона, REST-клиент к Bitrix24, обработка вебхуков, ведение по воронке сделок. Код покрыт автотестами (pytest).</p></div>
+        <div class="col re"><div class="t">Результат</div><p>Первичный контакт систематизирован и ускорен. 48 зелёных тестов — надёжная основа, готовая к подключению телефонии и распознавания речи.</p></div>
+      </div>
+      <div class="case-stack"><span class="tag">Bitrix24 REST</span><span class="tag">Python</span><span class="tag">Вебхуки</span><span class="tag">pytest</span></div>
+    </div>
+
+    <!-- 04 -->
+    <div class="case reveal">
+      <div class="case-id">CASE_04</div>
+      <div class="case-top">
+        <div><h3>Приватные виджеты для amoCRM</h3><div class="where">Проектная разработка · несколько заказчиков</div></div>
+        <div class="badge">в проде</div>
+      </div>
+      <div class="prs">
+        <div class="col pr"><div class="t">Проблема</div><p>Заказчикам не хватало штатного amoCRM: подбор персонала, учёт аренды и финансы велись вручную и вне CRM.</p></div>
+        <div class="col so"><div class="t">Решение</div><p>Разработал приватные виджеты: «Анкета кандидата», виджет учёта аренды с OAuth и автообновлением токенов, MVP-трекер финансов (React + TS + Supabase, iframe в карточку сделки).</p></div>
+        <div class="col re"><div class="t">Результат</div><p>Профильные процессы переехали внутрь CRM. Виджет аренды (v1.0.7) работает в продакшене, финтрекер задеплоен на Vercel.</p></div>
+      </div>
+      <div class="case-stack"><span class="tag live">amoCRM Widgets</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">OAuth</span><span class="tag">Supabase</span></div>
+    </div>
+
+    <!-- 05 -->
+    <div class="case reveal">
+      <div class="case-id">CASE_05</div>
+      <div class="case-top">
+        <div><h3>Возврат дебиторки и финконтроль</h3><div class="where">instans.in · страхование</div></div>
+        <div class="badge">1,9 млн ₽</div>
+      </div>
+      <div class="prs">
+        <div class="col pr"><div class="t">Проблема</div><p>Зависла дебиторская задолженность ~2 млн ₽ без системного контроля возврата. Отчётность собиралась вручную.</p></div>
+        <div class="col so"><div class="t">Решение</div><p>Внедрил внутренний финконтроль и процесс работы с должниками. Параллельно связал amoCRM ↔ Google Sheets — отчётность стала автоматической.</p></div>
+        <div class="col re"><div class="t">Результат</div><p>Вернул 1,9 млн ₽ из 2 млн. Ручной труд по отчётности упал на 65%, ошибки в выгрузках ушли.</p></div>
+      </div>
+      <div class="case-stack"><span class="tag">Финконтроль</span><span class="tag">amoCRM</span><span class="tag">Google Sheets API</span><span class="tag">Node.js</span></div>
+    </div>
+
+    <!-- 06 -->
+    <div class="case reveal">
+      <div class="case-id">CASE_06</div>
+      <div class="case-top">
+        <div><h3>Telegram-бот расчёта ЗП</h3><div class="where">EcoFamilySchool / instans.in</div></div>
+        <div class="badge">5 ч → 30 мин</div>
+      </div>
+      <div class="prs">
+        <div class="col pr"><div class="t">Проблема</div><p>Расчёт и выплата ЗП занимали у бухгалтера ~5 часов и сопровождались ошибками в ручных расчётах.</p></div>
+        <div class="col so"><div class="t">Решение</div><p>Разработал Telegram-бота расчёта ЗП под структуру компании: тянет данные, считает по правилам, формирует ведомость.</p></div>
+        <div class="col re"><div class="t">Результат</div><p>Время бухгалтера — с 5 часов до 30 минут. Ошибки расчёта — на 90% меньше.</p></div>
+      </div>
+      <div class="case-stack"><span class="tag">Telegram Bot API</span><span class="tag">Python</span><span class="tag">Google Sheets</span></div>
+    </div>
+
+    <!-- 07 -->
+    <div class="case reveal">
+      <div class="case-id">CASE_07</div>
+      <div class="case-top">
+        <div><h3>AI-симулятор для тренировки учителей</h3><div class="where">«Виртуальный Педагог» · EdTech-продукт</div></div>
+        <div class="badge">оценка 95%</div>
+      </div>
+      <div class="prs">
+        <div class="col pr"><div class="t">Проблема</div><p>HR не мог быстро и объективно оценивать новых учителей, а тренировать их «на живых учениках» — рискованно.</p></div>
+        <div class="col so"><div class="t">Решение</div><p>Собрал симулятор: 3D-класс с AI-учениками (провокатор, апатичный, лидер, шут), психологический ко-пилот с паузой и разбором ошибок. Фронт на статике, бэкенд serverless (OpenAI), auth на Firebase, деплой Vercel.</p></div>
+        <div class="col re"><div class="t">Результат</div><p>Точность оценки кандидата — 95%. Тренировка навыков без риска для реальных уроков, разбор каждой ошибки.</p></div>
+      </div>
+      <div class="case-shot"><img src="case-simulator.webp" alt="Лендинг симулятора VirtualPedagogue" loading="lazy" width="1200" height="769"><div class="cap"><span class="live-dot"></span>Лендинг продукта: 3D-класс с AI-учениками и психологическим ко-пилотом</div></div>
+      <div class="case-stack"><span class="tag live">OpenAI</span><span class="tag">Firebase</span><span class="tag">Node.js</span><span class="tag">Vercel</span><span class="tag">GA4</span></div>
+    </div>
+
+    <!-- 08 -->
+    <div class="case reveal">
+      <div class="case-id">CASE_08</div>
+      <div class="case-top">
+        <div><h3>Аналитика звонков и Zoom без прослушивания</h3><div class="where">EcoFamilySchool · контроль качества</div></div>
+        <div class="badge">часы → минуты</div>
+      </div>
+      <div class="prs">
+        <div class="col pr"><div class="t">Проблема</div><p>Руководитель не мог физически прослушать все звонки и Zoom-встречи. Качество продаж и уроков оставалось «на ощупь».</p></div>
+        <div class="col so"><div class="t">Решение</div><p>Настроил выгрузку записей, транскрибацию и AI-разбор диалогов: ключевые моменты, ошибки, оценка по критериям — без ручного прослушивания каждого.</p></div>
+        <div class="col re"><div class="t">Результат</div><p>Разбор звонка — минуты вместо часов. Руководитель видит картину качества в цифрах, а не по выборке.</p></div>
+      </div>
+      <div class="case-stack"><span class="tag">Zoom API</span><span class="tag">STT</span><span class="tag">LLM-анализ</span><span class="tag">Python</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE PROJECTS -->
+<section class="more" id="more">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">// ещё из портфолио</div>
+      <h2>А также <span class="em">~26 проектов</span> в проде и разработке</h2>
+      <p>Боты, интеграции, виджеты, аналитика и инфраструктура — часть работает на VPS и в CRM прямо сейчас.</p>
+    </div>
+    <div class="pgrid">
+      <div class="pcard reveal"><div class="ph"><div class="pt">MAX-бот × amoCRM</div><span class="ps prod">prod</span></div><div class="pd">Python + FastAPI бот для мессенджера MAX: рассылки сотрудникам по CRM-событиям через webhook.</div></div>
+      <div class="pcard reveal d1"><div class="ph"><div class="pt">Sheets ↔ amoCRM sync</div><span class="ps prod">prod</span></div><div class="pd">Node.js сервис на VPS (PM2): по вебхуку из amoCRM обновляет справочники в Google Sheets.</div></div>
+      <div class="pcard reveal d2"><div class="ph"><div class="pt">AIVA — голос → расходы</div><span class="ps prod">prod</span></div><div class="pd">Telegram-бот: голосовое сообщение → учёт расходов. RU / UZ / EN, Google Speech-to-Text.</div></div>
+      <div class="pcard reveal"><div class="ph"><div class="pt">School Calendar</div><span class="ps prod">active</span></div><div class="pd">React 19 + Vite: школьный календарь с автоматическим подбором замен учителей.</div></div>
+      <div class="pcard reveal d1"><div class="ph"><div class="pt">Настройка amoCRM по макету</div><span class="ps">active</span></div><div class="pd">Скрипты развёртывания amoCRM «под ключ» для нескольких компаний: воронки, поля, роботы.</div></div>
+      <div class="pcard reveal d2"><div class="ph"><div class="pt">Автокран · FastAPI×amoCRM</div><span class="ps">svc</span></div><div class="pd">Микросервис-интеграция FastAPI ↔ amoCRM для компании спецтехники.</div></div>
+      <div class="pcard reveal"><div class="ph"><div class="pt">«Мир Знаний»</div><span class="ps">MVP</span></div><div class="pd">Next.js RPG-приложение для 5 класса: обучение через игру, брендбук, геймификация.</div></div>
+      <div class="pcard reveal d1"><div class="ph"><div class="pt">Свой VPN + клиенты</div><span class="ps prod">active</span></div><div class="pd">VLESS-Reality / WireGuard: скрипты управления, ~30 выданных конфигов пользователям.</div></div>
+      <div class="pcard reveal d2"><div class="ph"><div class="pt">Mattermost для компании</div><span class="ps prod">deployed</span></div><div class="pd">Self-hosted корпоративный мессенджер на docker-compose для внутреннего общения.</div></div>
+      <div class="pcard reveal"><div class="ph"><div class="pt">graph-pilot</div><span class="ps">product</span></div><div class="pd">Скилл-автопилот к Graphify: упаковал 40+ команд в понятный интерфейс-лид-магнит.</div></div>
+      <div class="pcard reveal d1"><div class="ph"><div class="pt">Генератор КП / ТЗ</div><span class="ps">done</span></div><div class="pd">Python-инструмент: автоматическая сборка коммерческих предложений и техзаданий.</div></div>
+      <div class="pcard reveal d2"><div class="ph"><div class="pt">Салонный бот · Temploy</div><span class="ps">dev</span></div><div class="pd">FastAPI + Alembic + Docker: бот записи для салона с админкой и миграциями.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">// стек и навыки</div>
+      <h2>Чем <span class="em">решаю задачи</span></h2>
+    </div>
+    <div class="stackgrid">
+      <div class="scol reveal"><div class="h">Автоматизация / AI</div><span class="tag">n8n</span><span class="tag">ИИ-агенты</span><span class="tag">LLM / OpenAI</span><span class="tag">Telegram Bot API</span><span class="tag">STT</span></div>
+      <div class="scol reveal d1"><div class="h">CRM</div><span class="tag">amoCRM</span><span class="tag">Bitrix24</span><span class="tag">amoCRM Widgets</span><span class="tag">Digital Pipeline</span></div>
+      <div class="scol reveal d2"><div class="h">Разработка</div><span class="tag">Python</span><span class="tag">JavaScript / TS</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">FastAPI</span><span class="tag">Next.js</span></div>
+      <div class="scol reveal"><div class="h">Интеграции / данные</div><span class="tag">REST API</span><span class="tag">OAuth</span><span class="tag">Google Sheets API</span><span class="tag">Zoom API</span><span class="tag">Supabase</span><span class="tag">Firebase</span><span class="tag">SQL</span><span class="tag">«Мой склад»</span></div>
+      <div class="scol reveal d1"><div class="h">Инфраструктура</div><span class="tag">VPS</span><span class="tag">PM2</span><span class="tag">Docker</span><span class="tag">Vercel</span><span class="tag">VLESS / WireGuard</span></div>
+      <div class="scol reveal d2"><div class="h">Телефония / операции</div><span class="tag">Sipuni</span><span class="tag">Mango Office</span><span class="tag">iiko</span><span class="tag">Финконтроль</span><span class="tag">Найм / онбординг</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:linear-gradient(180deg,transparent,var(--bg2),transparent)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">// опыт работы</div>
+      <h2>4+ года <span class="em">на операционке и разработке</span></h2>
+    </div>
+    <div class="tl">
+      <div class="item reveal">
+        <div class="when">Июль 2025 — настоящее время</div>
+        <div class="role">Бизнес-ассистент <span>· EcoFamilySchool (онлайн-школа, EdTech)</span></div>
+        <ul>
+          <li>Внедрил ИИ-агентов: расходы на подрядчиков <b>60к → 5к ₽/мес</b></li>
+          <li>Автопостинг в соцсети и журнал: <b>3 часа → 2 минуты</b></li>
+          <li>Автоматизация выплат ЗП: <b>5 часов → 30 минут</b></li>
+          <li>Аналитический борд для HR, робот обзвона на Bitrix24, разбор Zoom и звонков</li>
+        </ul>
+      </div>
+      <div class="item reveal">
+        <div class="when">Август 2023 — Август 2025</div>
+        <div class="role">Бизнес-ассистент <span>· instans.in (страхование)</span></div>
+        <ul>
+          <li>Вернул <b>1,9 млн ₽</b> дебиторки из 2 млн</li>
+          <li>Связал amoCRM ↔ Google Sheets: <b>−65%</b> ручного труда</li>
+          <li>10+ регламентов (−40% времени задач), Telegram-бот расчёта ЗП</li>
+          <li>Контроль подрядчиков: <b>−70%</b> срывов сроков; онбординг: адаптация −60%</li>
+        </ul>
+      </div>
+      <div class="item reveal">
+        <div class="when">Октябрь 2022 — Август 2023</div>
+        <div class="role">Ассистент → администратор проекта <span>· NeedSupport (WorldSkills)</span></div>
+        <ul>
+          <li><b>250+ заявок/день</b> с точностью 98%; повышен до администратора проекта</li>
+          <li>Снял <b>600+ часов</b> операционки с руководства</li>
+          <li>Генератор договоров (−30% ручной работы), международные встречи и логистика</li>
+        </ul>
+      </div>
+      <div class="item reveal">
+        <div class="when">2021 — 2022</div>
+        <div class="role">Менеджер по работе с клиентами <span>· ИП Долгошеев (zaptar.ru)</span></div>
+        <ul>
+          <li>Восстановил утерянный товар на <b>≈200 000 ₽</b> через аналитику логистики</li>
+          <li>Автоматизировал обновление статусов заказов — меньше обращений в поддержку</li>
+        </ul>
+      </div>
+      <div class="item reveal">
+        <div class="when">2022 — 2025 · проектно</div>
+        <div class="role">Проектная разработка <span>· Автоюрист №1, Кафе «Канта», FlowerSystemGroup</span></div>
+        <ul>
+          <li>Автоюрист №1: внедрил amoCRM + Mango Office с нуля, автоотчётность</li>
+          <li>Кафе «Канта»: агрегаторы доставки (+60% к скорости заказов), iiko</li>
+          <li>FlowerSystemGroup: аналитика товаров (−80% рутины), «Мой склад» по API, SQL</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div class="in">
+        <h2>Обсудим <span class="em">вашу задачу?</span></h2>
+        <p>Нужно снять рутину с команды, навести порядок в процессах или собрать ИИ-агента под конкретный кейс — напишите, разберём за один созвон и посчитаю, сколько вы сэкономите.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://t.me/absoLute_ages">Написать в Telegram</a>
+          <a class="btn btn-ghost" href="mailto:vladtar2001@gmail.com">vladtar2001@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="slogan">Меньше рутины. <b>Больше результата.</b></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>© 2026 Влад Тарасьев · Бизнес-ассистент &amp; специалист по автоматизации</div>
+    <div><a href="https://t.me/absoLute_ages">@absoLute_ages</a> · <a href="mailto:vladtar2001@gmail.com">vladtar2001@gmail.com</a> · +7 910 119-36-59</div>
+  </div>
+</footer>
+
+<script>
+// nav shadow on scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+
+// reveal on scroll
+const io=new IntersectionObserver((entries)=>{
+  for(const e of entries){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }
+},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

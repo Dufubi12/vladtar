@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Влад Тарасьев — резюме</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap&subset=cyrillic,latin');
+
+:root{
+  --bg:#0a0e14;
+  --surface:#121826;
+  --surface2:#171f30;
+  --line:rgba(255,255,255,.08);
+  --line2:rgba(255,255,255,.12);
+  --text:#e8eef6;
+  --muted:#8a98ab;
+  --dim:#5d6b7e;
+  --accent:#22d3ee;
+  --accent-soft:rgba(34,211,238,.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+@page{size:A4;margin:0}
+
+html,body{
+  font-family:'Manrope','Segoe UI',sans-serif;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+  color:var(--text);
+}
+
+.page{
+  width:210mm;
+  height:297mm;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 500px at 88% -8%, rgba(34,211,238,.10), transparent 60%),
+    radial-gradient(700px 500px at -10% 110%, rgba(34,211,238,.06), transparent 60%),
+    var(--bg);
+  padding:11mm 13mm 9mm;
+  display:flex;
+  flex-direction:column;
+  gap:4.5mm;
+}
+
+/* ---------- HEADER ---------- */
+.header{display:flex;justify-content:space-between;align-items:flex-start;gap:10mm}
+.name{
+  font-size:32pt;font-weight:800;letter-spacing:-.5px;line-height:1;
+}
+.name b{color:var(--accent)}
+.role{
+  margin-top:3mm;font-size:11pt;font-weight:600;color:var(--text);
+}
+.role span{color:var(--accent)}
+.tagline{
+  margin-top:2.5mm;font-size:9pt;line-height:1.5;color:var(--muted);max-width:108mm;
+}
+.contact{
+  flex-shrink:0;display:flex;flex-direction:column;gap:1.6mm;align-items:flex-end;
+  font-size:8.6pt;color:var(--muted);text-align:right;
+}
+.contact .v{color:var(--text);font-weight:500}
+.cta{
+  margin-top:3mm;display:inline-flex;align-items:center;gap:2mm;
+  background:var(--accent);color:#04222b;font-weight:800;font-size:9pt;
+  padding:3mm 5mm;border-radius:2.4mm;text-decoration:none;letter-spacing:.2px;
+}
+
+/* ---------- METRICS ---------- */
+.metrics{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;
+}
+.metric{
+  background:var(--surface);border:1px solid var(--line);border-radius:3mm;
+  padding:3.2mm 4mm;position:relative;overflow:hidden;
+}
+.metric::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:1mm;background:var(--accent);
+}
+.metric .num{font-size:17pt;font-weight:800;color:var(--accent);line-height:1;font-family:'JetBrains Mono',monospace;letter-spacing:-1px}
+.metric .lbl{margin-top:2mm;font-size:8.2pt;color:var(--muted);line-height:1.35}
+
+/* ---------- BODY GRID ---------- */
+.body{display:grid;grid-template-columns:1.45fr 1fr;gap:7mm;flex:1}
+.sec-title{
+  font-size:8pt;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:3mm;display:flex;align-items:center;gap:2.5mm;
+}
+.sec-title::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.block{margin-bottom:4mm}
+
+/* experience */
+.job{margin-bottom:3.2mm}
+.job .top{display:flex;justify-content:space-between;align-items:baseline;gap:4mm}
+.job .co{font-size:10pt;font-weight:700}
+.job .date{font-size:8pt;color:var(--dim);font-family:'JetBrains Mono',monospace;flex-shrink:0}
+.job .pos{font-size:8.6pt;color:var(--accent);font-weight:600;margin-top:.5mm}
+.job .desc{font-size:8.4pt;color:var(--muted);line-height:1.45;margin-top:1.5mm}
+.proj-line{font-size:8.2pt;color:var(--muted);line-height:1.55}
+.proj-line b{color:var(--text);font-weight:600}
+
+/* right column cards */
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:3mm;
+  padding:3.8mm;margin-bottom:3.2mm;
+}
+.tags{display:flex;flex-wrap:wrap;gap:1.8mm}
+.tag{
+  font-size:8pt;background:var(--surface2);border:1px solid var(--line2);
+  color:var(--text);padding:1.6mm 2.8mm;border-radius:1.8mm;
+}
+.tag.k{border-color:rgba(34,211,238,.35);color:var(--accent);background:var(--accent-soft)}
+.kv{font-size:8.6pt;line-height:1.5}
+.kv .k{color:var(--dim)}
+.kv .val{color:var(--text);font-weight:600}
+.edu .d{font-size:9.4pt;font-weight:700}
+.edu .s{font-size:8.4pt;color:var(--muted);margin-top:1mm;line-height:1.4}
+
+.expertise{display:flex;flex-direction:column;gap:2.4mm}
+.exp-item{font-size:8.6pt;color:var(--muted);line-height:1.4;padding-left:5mm;position:relative}
+.exp-item::before{content:"▹";position:absolute;left:0;color:var(--accent);font-weight:700}
+.exp-item b{color:var(--text);font-weight:600}
+
+.foot{
+  margin-top:0;display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--line);padding-top:2.5mm;font-size:8pt;color:var(--dim);
+}
+.foot a{color:var(--accent);text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="name">Влад <b>Тарасьев</b></div>
+      <div class="role">Бизнес-ассистент · <span>специалист по автоматизации</span> (AI, CRM, no-code)</div>
+      <div class="tagline">Строю ИИ-агентов и код-решения, которые снимают рутину и освобождают время руководителя. 4+ года: от финконтроля и найма до разработки ботов, виджетов и интеграций.</div>
+    </div>
+    <div class="contact">
+      <div><span class="v">+7 910 119-36-59</span></div>
+      <div><span class="v">vladtar2001@gmail.com</span></div>
+      <div>Telegram <span class="v">@absoLute_ages</span></div>
+      <div>Брянск · <span class="v">удалённо</span></div>
+      <a class="cta" href="https://vladtar.ru/cases">Кейсы и разборы →</a>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metric"><div class="num">60к → 5к</div><div class="lbl">расходы ₽/мес после внедрения ИИ-агентов</div></div>
+    <div class="metric"><div class="num">1,9 млн ₽</div><div class="lbl">возвращённой дебиторки (из 2 млн)</div></div>
+    <div class="metric"><div class="num">−65%</div><div class="lbl">ручного труда: связал CRM и Google Sheets</div></div>
+    <div class="metric"><div class="num">−90%</div><div class="lbl">ошибок расчёта ЗП через Telegram-бота</div></div>
+    <div class="metric"><div class="num">600+ ч</div><div class="lbl">высвобождено времени у первых лиц</div></div>
+    <div class="metric"><div class="num">48 ✓</div><div class="lbl">зелёных тестов у робота обзвона (Bitrix24)</div></div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+    <!-- LEFT -->
+    <div>
+      <div class="block">
+        <div class="sec-title">Чем полезен</div>
+        <div class="expertise">
+          <div class="exp-item"><b>ИИ-агенты и автоматизация</b> процессов на n8n, замена подрядчиков</div>
+          <div class="exp-item"><b>Разработка:</b> Telegram-боты, виджеты amoCRM, роботы обзвона на Bitrix24</div>
+          <div class="exp-item"><b>Интеграции:</b> REST API, «Мой склад», Zoom-аналитика, SQL-серверы</div>
+          <div class="exp-item"><b>Операционка:</b> финконтроль и дебиторка, найм и онбординг, регламенты</div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="sec-title">Опыт работы · 4+ года</div>
+
+        <div class="job">
+          <div class="top"><div class="co">EcoFamilySchool</div><div class="date">2025 — н.в.</div></div>
+          <div class="pos">Бизнес-ассистент · онлайн-школа (EdTech)</div>
+          <div class="desc">Внедрил ИИ-агентов (60к→5к ₽/мес), автоматизировал постинг, выплаты ЗП и HR-аналитику, собрал лендинги-инструменты, настроил робота обзвона и разбор Zoom/звонков.</div>
+        </div>
+
+        <div class="job">
+          <div class="top"><div class="co">instans.in</div><div class="date">2023 — 2025</div></div>
+          <div class="pos">Бизнес-ассистент · страхование</div>
+          <div class="desc">Вернул 1,9 млн ₽ дебиторки, связал amoCRM ↔ Google Sheets (−65% рутины), 10+ регламентов (−40% времени задач), Telegram-бот расчёта ЗП, контроль подрядчиков (−70% срывов).</div>
+        </div>
+
+        <div class="job">
+          <div class="top"><div class="co">NeedSupport</div><div class="date">2022 — 2023</div></div>
+          <div class="pos">Ассистент · повышен до администратора проекта WorldSkills</div>
+          <div class="desc">250+ заявок/день с точностью 98%, генератор договоров (−30% ручной работы), снял 600+ часов операционки с руководства, международные встречи и логистика.</div>
+        </div>
+
+        <div class="job">
+          <div class="top"><div class="co">Проектная разработка</div><div class="date">2022 — 2025</div></div>
+          <div class="proj-line"><b>Виджеты amoCRM:</b> «Анкета кандидата» и виджет учёта аренды (OAuth, токены) · <b>Автоюрист №1:</b> внедрил amoCRM + Mango Office · <b>Кафе «Канта»:</b> агрегаторы доставки, iiko · <b>FlowerSystemGroup:</b> аналитика, «Мой склад» по API, SQL.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+      <div class="card">
+        <div class="sec-title">Стек</div>
+        <div class="tags">
+          <span class="tag k">amoCRM</span>
+          <span class="tag k">Bitrix24</span>
+          <span class="tag k">n8n</span>
+          <span class="tag k">AI-агенты</span>
+          <span class="tag">Telegram Bot API</span>
+          <span class="tag">REST API</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Google Sheets</span>
+          <span class="tag">Excel</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">«Мой склад»</span>
+          <span class="tag">iiko</span>
+          <span class="tag">Sipuni</span>
+        </div>
+      </div>
+
+      <div class="card edu">
+        <div class="sec-title">Образование</div>
+        <div class="d">БГУ им. И.Г. Петровского</div>
+        <div class="s">Компьютерные технологии и программное обеспечение, ФМФ · 2022</div>
+      </div>
+
+      <div class="card">
+        <div class="sec-title">Кратко</div>
+        <div class="kv"><span class="k">Языки:</span> <span class="val">Русский</span> (родной), <span class="val">English B1</span></div>
+        <div class="kv" style="margin-top:2mm"><span class="k">Права:</span> <span class="val">B, C</span></div>
+        <div class="kv" style="margin-top:2mm"><span class="k">Формат:</span> <span class="val">удалённо</span>, полная / проектная</div>
+        <div class="kv" style="margin-top:2mm"><span class="k">Рекомендации:</span> <span class="val">по запросу</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="foot">
+    <div>Подробные кейсы с разбором «проблема → решение → результат»:</div>
+    <div><a href="https://vladtar.ru/cases">vladtar.ru/cases</a></div>
+  </div>
+
+</div>
+</body>
+</html>

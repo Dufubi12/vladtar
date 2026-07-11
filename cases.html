@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Влад Тарасьев — кейсы и разборы</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap&subset=cyrillic,latin');
+
+:root{
+  --bg:#0a0e14; --surface:#121826; --surface2:#171f30;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --text:#e8eef6; --muted:#909db0; --dim:#5d6b7e;
+  --accent:#22d3ee; --accent-soft:rgba(34,211,238,.12);
+  --green:#34d399; --green-soft:rgba(52,211,153,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope','Segoe UI',sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+a{color:var(--accent);text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* HERO */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 600px at 85% -20%, rgba(34,211,238,.14), transparent 60%),
+    radial-gradient(700px 500px at -10% 120%, rgba(34,211,238,.07), transparent 55%),
+    var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{padding:72px 0 56px}
+.eyebrow{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:18px}
+.h1{font-size:clamp(38px,7vw,68px);font-weight:800;letter-spacing:-1.5px;line-height:1.02}
+.h1 b{color:var(--accent)}
+.lede{font-size:clamp(16px,2.2vw,20px);color:var(--muted);max-width:620px;margin-top:22px}
+.hero-contacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;font-size:14px;
+  background:var(--surface);border:1px solid var(--line2);border-radius:999px;
+  padding:9px 16px;color:var(--text);font-weight:500;transition:.18s;
+}
+.chip:hover{border-color:var(--accent);transform:translateY(-1px)}
+.chip.cta{background:var(--accent);color:#04222b;font-weight:800;border-color:var(--accent)}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:-34px auto 0;position:relative;z-index:2}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;position:relative;overflow:hidden}
+.mcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.mcard .n{font-size:30px;font-weight:800;color:var(--accent);font-family:'JetBrains Mono',monospace;letter-spacing:-1px;line-height:1}
+.mcard .l{margin-top:10px;font-size:14px;color:var(--muted)}
+
+/* SECTIONS */
+section{padding:64px 0}
+.sec-head{display:flex;align-items:center;gap:16px;margin-bottom:36px}
+.sec-head h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.5px}
+.sec-head .bar{flex:1;height:1px;background:var(--line)}
+.sec-head .idx{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:15px;font-weight:700}
+
+/* CASE CARDS */
+.case{
+  background:var(--surface);border:1px solid var(--line);border-radius:18px;
+  padding:30px;margin-bottom:18px;transition:.2s;
+}
+.case:hover{border-color:var(--line2);transform:translateY(-2px)}
+.case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.case h3{font-size:21px;font-weight:700;letter-spacing:-.3px}
+.case .where{font-size:13px;color:var(--dim);margin-top:5px}
+.badge{flex-shrink:0;font-size:13px;font-weight:800;color:var(--green);background:var(--green-soft);border:1px solid rgba(52,211,153,.3);padding:7px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace}
+.prs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.prs .col .t{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
+.prs .col p{font-size:14.5px;color:var(--muted)}
+.prs .col.res p{color:var(--text)}
+.case .stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.tag{font-size:12.5px;background:var(--surface2);border:1px solid var(--line2);color:var(--muted);padding:5px 11px;border-radius:7px}
+
+/* TIMELINE */
+.tl{border-left:2px solid var(--line);margin-left:8px;padding-left:28px}
+.tl .item{position:relative;padding-bottom:30px}
+.tl .item::before{content:"";position:absolute;left:-36px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(34,211,238,.25)}
+.tl .when{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--dim)}
+.tl .role{font-size:19px;font-weight:700;margin-top:3px}
+.tl .role span{color:var(--accent);font-weight:600;font-size:15px}
+.tl ul{margin-top:10px;list-style:none}
+.tl li{font-size:14.5px;color:var(--muted);padding-left:20px;position:relative;margin-bottom:6px}
+.tl li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+
+/* STACK GRID */
+.stackgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.scol{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.scol .h{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
+.scol .tag{display:inline-block;margin:0 6px 6px 0}
+
+/* CTA */
+.endcta{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:48px;text-align:center;margin-bottom:64px}
+.endcta h2{font-size:clamp(24px,4vw,32px);font-weight:800;margin-bottom:14px}
+.endcta p{color:var(--muted);max-width:480px;margin:0 auto 26px}
+.endcta .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-size:13px;text-align:center}
+
+@media(max-width:760px){
+  .metrics{grid-template-columns:1fr 1fr}
+  .prs{grid-template-columns:1fr;gap:14px}
+}
+@media(max-width:480px){.metrics{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Кейсы и разборы</div>
+    <div class="h1">Влад <b>Тарасьев</b></div>
+    <div class="lede">Бизнес-ассистент и специалист по автоматизации. Превращаю рутину в ИИ-агентов, ботов и интеграции — и считаю эффект в часах и рублях. Ниже — реальные проекты с разбором «проблема → решение → результат».</div>
+    <div class="hero-contacts">
+      <a class="chip cta" href="https://t.me/absoLute_ages">Telegram @absoLute_ages</a>
+      <a class="chip" href="mailto:vladtar2001@gmail.com">vladtar2001@gmail.com</a>
+      <span class="chip">+7 910 119-36-59</span>
+      <span class="chip">Брянск · удалённо</span>
+    </div>
+  </div>
+</header>
+
+<!-- METRICS -->
+<div class="wrap">
+  <div class="metrics">
+    <div class="mcard"><div class="n">60к→5к</div><div class="l">расходы ₽/мес после внедрения ИИ-агентов</div></div>
+    <div class="mcard"><div class="n">1,9 млн ₽</div><div class="l">возвращённой дебиторки из 2 млн</div></div>
+    <div class="mcard"><div class="n">−65%</div><div class="l">ручного труда: CRM ↔ Google Sheets</div></div>
+    <div class="mcard"><div class="n">−90%</div><div class="l">ошибок расчёта ЗП через бота</div></div>
+    <div class="mcard"><div class="n">600+ ч</div><div class="l">высвобождено у первых лиц</div></div>
+    <div class="mcard"><div class="n">4+ года</div><div class="l">в роли бизнес-ассистента и автоматизатора</div></div>
+  </div>
+</div>
+
+<!-- CASES -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">01</span><h2>Избранные кейсы</h2><span class="bar"></span></div>
+
+    <div class="case">
+      <div class="case-top">
+        <div><h3>ИИ-агенты вместо подрядчиков</h3><div class="where">EcoFamilySchool · онлайн-школа (EdTech)</div></div>
+        <div class="badge">−55 000 ₽/мес</div>
+      </div>
+      <div class="prs">
+        <div class="col"><div class="t">Проблема</div><p>Компания тратила ~60 000 ₽/мес на внешних подрядчиков под рутинные задачи: контент, обработка данных, типовые ответы.</p></div>
+        <div class="col"><div class="t">Решение</div><p>Спроектировал и внедрил связку ИИ-агентов (на базе n8n + LLM), которые закрыли эти задачи без участия подрядчиков.</p></div>
+        <div class="col res"><div class="t">Результат</div><p>Расходы упали с 60 000 до 5 000 ₽/мес. Скорость и предсказуемость выросли, зависимость от внешних людей ушла.</p></div>
+      </div>
+      <div class="stack"><span class="tag">n8n</span><span class="tag">ИИ-агенты</span><span class="tag">LLM</span><span class="tag">API</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div><h3>Робот обзвона кандидатов на Bitrix24</h3><div class="where">HR-автоматизация · EdTech</div></div>
+        <div class="badge">48 ✓ тестов</div>
+      </div>
+      <div class="prs">
+        <div class="col"><div class="t">Проблема</div><p>Найм упирался в ручной обзвон кандидатов: долго, неравномерно, часть лидов остывала до первого контакта.</p></div>
+        <div class="col"><div class="t">Решение</div><p>Разработал полуавтоматического робота обзвона: ядро дозвона, REST-клиент к Bitrix24, обработка вебхуков, ведение по воронке сделок. Код покрыт автотестами.</p></div>
+        <div class="col res"><div class="t">Результат</div><p>Первичный контакт с кандидатами ускорен и систематизирован. 48 проходящих тестов — основа, готовая к подключению телефонии и STT.</p></div>
+      </div>
+      <div class="stack"><span class="tag">Bitrix24 REST</span><span class="tag">Вебхуки</span><span class="tag">Воронка сделок</span><span class="tag">Автотесты</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div><h3>Приватные виджеты для amoCRM</h3><div class="where">Проектная разработка · 2 заказчика</div></div>
+        <div class="badge">2 продукта</div>
+      </div>
+      <div class="prs">
+        <div class="col"><div class="t">Проблема</div><p>Заказчикам не хватало штатного функционала amoCRM: подбор персонала и учёт аренды велись вручную и вне CRM.</p></div>
+        <div class="col"><div class="t">Решение</div><p>Разработал два приватных виджета: «Анкета кандидата» для подбора персонала и виджет учёта аренды с OAuth-авторизацией и автообновлением токенов.</p></div>
+        <div class="col res"><div class="t">Результат</div><p>Профильные процессы переехали внутрь CRM. Виджет аренды (v1.0.7) работает в продакшене.</p></div>
+      </div>
+      <div class="stack"><span class="tag">amoCRM Widgets</span><span class="tag">JavaScript</span><span class="tag">OAuth</span><span class="tag">REST API</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div><h3>Автоматизация выплат ЗП</h3><div class="where">EcoFamilySchool / instans.in</div></div>
+        <div class="badge">5 ч → 30 мин</div>
+      </div>
+      <div class="prs">
+        <div class="col"><div class="t">Проблема</div><p>Расчёт и выплата ЗП занимали у бухгалтера ~5 часов и сопровождались ошибками в ручных расчётах.</p></div>
+        <div class="col"><div class="t">Решение</div><p>Разработал Telegram-бота расчёта ЗП и автоматизировал процесс выплат под структуру компании.</p></div>
+        <div class="col res"><div class="t">Результат</div><p>Время бухгалтера сократилось с 5 часов до 30 минут, ошибки расчёта — на 90%.</p></div>
+      </div>
+      <div class="stack"><span class="tag">Telegram Bot API</span><span class="tag">Google Sheets</span><span class="tag">Автоматизация</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div><h3>Возврат дебиторки и финконтроль</h3><div class="where">instans.in · страхование</div></div>
+        <div class="badge">1,9 млн ₽</div>
+      </div>
+      <div class="prs">
+        <div class="col"><div class="t">Проблема</div><p>У компании зависла дебиторская задолженность ~2 млн ₽ без системного контроля возврата.</p></div>
+        <div class="col"><div class="t">Решение</div><p>Внедрил внутренний финансовый контроль и процесс работы с должниками, довёл до возврата.</p></div>
+        <div class="col res"><div class="t">Результат</div><p>Вернул 1,9 млн ₽ из 2 млн. Параллельно связал amoCRM и Google Sheets — отчётность стала автоматической (−65% рутины).</p></div>
+      </div>
+      <div class="stack"><span class="tag">Финконтроль</span><span class="tag">amoCRM</span><span class="tag">Google Sheets</span></div>
+    </div>
+
+    <div class="case">
+      <div class="case-top">
+        <div><h3>Лендинги-инструменты и аналитика встреч</h3><div class="where">EcoFamilySchool</div></div>
+        <div class="badge">оценка 95%</div>
+      </div>
+      <div class="prs">
+        <div class="col"><div class="t">Проблема</div><p>HR не мог быстро оценивать новых учителей, расписания и замены велись в Google Sheets вручную, Zoom-встречи не анализировались.</p></div>
+        <div class="col"><div class="t">Решение</div><p>Собрал одностраничные веб-инструменты: «симулятор учителя» для оценки навыков, автокалендари индивидуальных работ и замен; настроил выгрузку и анализ Zoom и звонков.</p></div>
+        <div class="col res"><div class="t">Результат</div><p>Оценка кандидата — точность 95%; заполнение календарей с 1–2 ч до 5 мин; разбор звонков без прослушивания каждого диалога.</p></div>
+      </div>
+      <div class="stack"><span class="tag">Web / лендинги</span><span class="tag">Zoom API</span><span class="tag">Аналитика</span><span class="tag">Автоматизация</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section style="background:linear-gradient(180deg,transparent,rgba(34,211,238,.03),transparent)">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">02</span><h2>Опыт работы</h2><span class="bar"></span></div>
+    <div class="tl">
+      <div class="item">
+        <div class="when">Июль 2025 — настоящее время</div>
+        <div class="role">Бизнес-ассистент <span>· EcoFamilySchool (онлайн-школа, EdTech)</span></div>
+        <ul>
+          <li>Внедрил ИИ-агентов: расходы на подрядчиков 60к → 5к ₽/мес</li>
+          <li>Автопостинг в соцсети и журнал: 3 часа → 2 минуты</li>
+          <li>Автоматизация выплат ЗП: 5 часов → 30 минут</li>
+          <li>Аналитический борд для HR: ускорил найм, анализ 3 часа → 2 минуты</li>
+          <li>Робот обзвона кандидатов на Bitrix24, разбор Zoom и звонков</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">Август 2023 — Август 2025</div>
+        <div class="role">Бизнес-ассистент <span>· instans.in (страхование)</span></div>
+        <ul>
+          <li>Вернул 1,9 млн ₽ дебиторки из 2 млн</li>
+          <li>Связал amoCRM ↔ Google Sheets: −65% ручного труда</li>
+          <li>10+ регламентов: −40% времени задач, меньше ошибок</li>
+          <li>Telegram-бот расчёта ЗП; контроль подрядчиков: −70% срывов сроков</li>
+          <li>Первичный отбор кандидатов, онбординг: адаптация −60%</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">Октябрь 2022 — Август 2023</div>
+        <div class="role">Ассистент <span>· NeedSupport</span></div>
+        <ul>
+          <li>250+ заявок/день с точностью 98%</li>
+          <li>Повышен до администратора проекта WorldSkills</li>
+          <li>Снял 600+ часов операционки с руководства</li>
+          <li>Генератор договоров: −30% ручной работы; международные встречи и логистика</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">2021 — 2022</div>
+        <div class="role">Менеджер по работе с клиентами <span>· ИП Долгошеев (zaptar.ru)</span></div>
+        <ul>
+          <li>Восстановил утерянный товар на ≈200 000 ₽ через аналитику логистики</li>
+          <li>Автоматизировал обновление статусов заказов — меньше обращений в поддержку</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">2022 — 2025 · проектно</div>
+        <div class="role">Проектная разработка и операционка <span>· Автоюрист №1, Кафе «Канта», FlowerSystemGroup</span></div>
+        <ul>
+          <li>Автоюрист №1: внедрил amoCRM + Mango Office с нуля, автоотчётность</li>
+          <li>Кафе «Канта»: агрегаторы доставки (+60% к скорости заказов), iiko</li>
+          <li>FlowerSystemGroup: аналитика товаров (−80% рутины), «Мой склад» по API, SQL-сервер</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">03</span><h2>Стек и навыки</h2><span class="bar"></span></div>
+    <div class="stackgrid">
+      <div class="scol"><div class="h">Автоматизация / AI</div>
+        <span class="tag">n8n</span><span class="tag">ИИ-агенты</span><span class="tag">LLM</span><span class="tag">Telegram Bot API</span></div>
+      <div class="scol"><div class="h">CRM</div>
+        <span class="tag">amoCRM</span><span class="tag">Bitrix24</span><span class="tag">amoCRM Widgets</span></div>
+      <div class="scol"><div class="h">Разработка / интеграции</div>
+        <span class="tag">JavaScript</span><span class="tag">REST API</span><span class="tag">SQL</span><span class="tag">OAuth</span><span class="tag">«Мой склад»</span><span class="tag">Zoom API</span></div>
+      <div class="scol"><div class="h">Данные / офис</div>
+        <span class="tag">Google Sheets</span><span class="tag">Excel</span><span class="tag">Базы данных</span></div>
+      <div class="scol"><div class="h">Телефония / операции</div>
+        <span class="tag">Sipuni</span><span class="tag">Mango Office</span><span class="tag">iiko</span></div>
+      <div class="scol"><div class="h">Прочее</div>
+        <span class="tag">Финконтроль</span><span class="tag">Найм / онбординг</span><span class="tag">English B1</span><span class="tag">CorelDRAW</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="wrap">
+  <div class="endcta">
+    <h2>Обсудим задачу?</h2>
+    <p>Если нужно снять рутину с команды, навести порядок в процессах или собрать ИИ-агента под конкретный кейс — напишите, разберём за один созвон.</p>
+    <div class="row">
+      <a class="chip cta" href="https://t.me/absoLute_ages">Написать в Telegram</a>
+      <a class="chip" href="mailto:vladtar2001@gmail.com">vladtar2001@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<footer>© Влад Тарасьев · Бизнес-ассистент &amp; специалист по автоматизации</footer>
+
+</body>
+</html>
