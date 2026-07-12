@@ -202,6 +202,11 @@ section{padding:88px 0}
 .case:hover .case-shot img{transform:scale(1.02)}
 .case-shot .cap{position:absolute;bottom:0;left:0;right:0;padding:16px 16px 12px;font-size:12px;color:var(--text);background:linear-gradient(transparent,rgba(8,11,15,.85));display:flex;align-items:center;gap:8px}
 .case-shot .cap .live-dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px var(--mint-soft);flex-shrink:0}
+.grant{display:flex;align-items:center;gap:12px;margin-top:22px;padding:14px 18px;border-radius:12px;background:linear-gradient(135deg,rgba(47,208,168,.1),rgba(14,124,102,.06));border:1px solid var(--mint-line)}
+.grant .gi{font-size:20px;flex-shrink:0}
+.grant .gt{font-size:13.5px;color:var(--text);line-height:1.5}
+.grant .gt b{color:var(--mint);font-weight:700}
+.grant .gt .st{color:var(--muted)}
 @media(max-width:720px){.prs{grid-template-columns:1fr;gap:16px}.case{padding:24px}}
 
 /* ===== MORE PROJECTS GRID ===== */
@@ -486,16 +491,17 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--dim);font-siz
     <div class="case reveal">
       <div class="case-id">CASE_07</div>
       <div class="case-top">
-        <div><h3>AI-симулятор для тренировки учителей</h3><div class="where">«Виртуальный Педагог» · EdTech-продукт</div></div>
-        <div class="badge">оценка 95%</div>
+        <div><h3>AI-симулятор для тренировки учителей</h3><div class="where">«Виртуальный Педагог» · собственный EdTech-стартап</div></div>
+        <div class="badge">грант «Старт-1»</div>
       </div>
       <div class="prs">
         <div class="col pr"><div class="t">Проблема</div><p>HR не мог быстро и объективно оценивать новых учителей, а тренировать их «на живых учениках» — рискованно.</p></div>
-        <div class="col so"><div class="t">Решение</div><p>Собрал симулятор: 3D-класс с AI-учениками (провокатор, апатичный, лидер, шут), психологический ко-пилот с паузой и разбором ошибок. Фронт на статике, бэкенд serverless (OpenAI), auth на Firebase, деплой Vercel.</p></div>
-        <div class="col re"><div class="t">Результат</div><p>Точность оценки кандидата — 95%. Тренировка навыков без риска для реальных уроков, разбор каждой ошибки.</p></div>
+        <div class="col so"><div class="t">Решение</div><p>Спроектировал и собрал продукт с нуля: 3D-класс с AI-учениками (провокатор, апатичный, лидер, шут), психологический ко-пилот с паузой и разбором ошибок. Фронт на статике, бэкенд serverless (OpenAI), auth на Firebase, деплой Vercel. Подготовил защиту, финмодель и презентацию.</p></div>
+        <div class="col re"><div class="t">Результат</div><p>Точность оценки кандидата — 95%. Готовый MVP с пилотной моделью B2G/B2B, поданный на грантовую поддержку и в предпринимательский конкурс.</p></div>
       </div>
+      <div class="grant"><span class="gi">🏛</span><div class="gt"><b>Подан на грант «Старт-1»</b> (Фонд содействия инновациям) и в конкурс <b>«Я в деле»</b>. <span class="st">Стадия — MVP + пилот, EdTech B2G/B2B. Проект целиком: продукт, финмодель и защита.</span></div></div>
       <div class="case-shot"><img src="case-simulator.webp" alt="Лендинг симулятора VirtualPedagogue" loading="lazy" width="1200" height="769"><div class="cap"><span class="live-dot"></span>Лендинг продукта: 3D-класс с AI-учениками и психологическим ко-пилотом</div></div>
-      <div class="case-stack"><span class="tag live">OpenAI</span><span class="tag">Firebase</span><span class="tag">Node.js</span><span class="tag">Vercel</span><span class="tag">GA4</span></div>
+      <div class="case-stack"><span class="tag live">OpenAI</span><span class="tag">Firebase</span><span class="tag">Node.js</span><span class="tag">Vercel</span><span class="tag">Грант «Старт-1»</span><span class="tag">Финмодель</span></div>
     </div>
 
     <!-- 08 -->
